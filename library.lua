@@ -432,7 +432,7 @@ function library:window(properties)
 		size = properties.Size or properties.size or dim2(0, 500, 0, 650),
 	}
 
-	local animated_text = library:animation(cfg.name .. " | private")
+	local animated_text = cfg.name .. " | private"
 
 	-- watermark
 	local __holder = library:create("Frame", {
@@ -568,18 +568,6 @@ function library:window(properties)
 	})
 
 	library:apply_theme(glow, "accent", "ImageColor3")
-
-	task.spawn(function()
-		while true do
-			if __holder.Visible then
-				for i = 1, #animated_text do
-					task.wait(0.2)
-					name.Text = animated_text[i]
-				end
-			end
-			task.wait(0.2)
-		end
-	end)
 	--
 
 	-- window
